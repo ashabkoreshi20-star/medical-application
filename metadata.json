@@ -1,0 +1,6 @@
+{
+  "name": "We Care Hospitals",
+  "description": "Comprehensive healthcare platform for We Care Hospitals with department directory, specialist doctor profiles, and online appointment booking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

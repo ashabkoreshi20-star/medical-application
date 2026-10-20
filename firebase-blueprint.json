@@ -1,0 +1,65 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Registered patient profile in We Care Hospitals",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string", "maxLength": 100 },
+        "phoneNumber": { "type": "string", "maxLength": 30 },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["uid", "email"]
+    },
+    "Appointment": {
+      "title": "Appointment",
+      "description": "Patient medical appointment booking",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "referenceNumber": { "type": "string", "maxLength": 20 },
+        "departmentId": { "type": "string" },
+        "departmentName": { "type": "string" },
+        "doctorId": { "type": "string" },
+        "doctorName": { "type": "string" },
+        "doctorTitle": { "type": "string" },
+        "doctorFee": { "type": "number" },
+        "appointmentDate": { "type": "string" },
+        "timeSlot": { "type": "string" },
+        "consultationType": { "type": "string", "enum": ["in-person", "video"] },
+        "patientName": { "type": "string", "maxLength": 100 },
+        "patientEmail": { "type": "string", "format": "email" },
+        "patientPhone": { "type": "string", "maxLength": 30 },
+        "patientAge": { "type": "number" },
+        "patientGender": { "type": "string", "enum": ["male", "female", "other"] },
+        "reasonForVisit": { "type": "string", "maxLength": 1000 },
+        "medicalNotes": { "type": "string", "maxLength": 1000 },
+        "status": { "type": "string", "enum": ["confirmed", "completed", "cancelled"] },
+        "createdAt": { "type": "string" }
+      },
+      "required": [
+        "userId",
+        "referenceNumber",
+        "departmentId",
+        "doctorId",
+        "appointmentDate",
+        "timeSlot",
+        "patientName",
+        "patientEmail",
+        "patientPhone"
+      ]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Individual patient profile documents"
+    },
+    "/appointments/{appointmentId}": {
+      "schema": "Appointment",
+      "description": "Hospital appointment bookings associated with patient user accounts"
+    }
+  }
+}
